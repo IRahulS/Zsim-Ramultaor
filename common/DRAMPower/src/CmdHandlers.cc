@@ -46,11 +46,11 @@ int64_t zero_guard(int64_t cycles_in, const char* warning)
 {
   // Calculate max(0, cycles_in)
   int64_t zero = 0;
-  if (warning != nullptr && cycles_in < 0) {
-    // This line is commented out for now, we will attempt to remove the situations where
-    // these warnings trigger later.
-    // cerr << "WARNING: " << warning << endl;
-  }
+  // if (warning != nullptr && cycles_in < 0) {
+  //   // This line is commented out for now, we will attempt to remove the situations where
+  //   // these warnings trigger later.
+  //   // cerr << "WARNING: " << warning << endl;
+  // }
   return max(zero, cycles_in);
 }
 
@@ -123,10 +123,10 @@ void CommandAnalysis::handleRef(unsigned bank, int64_t timestamp)
   last_pre_cycle   = timestamp + memSpec.memTimingSpec.RFC - memSpec.memTimingSpec.RP;
   latest_pre_cycle = last_pre_cycle;
   actcycles       += memSpec.memTimingSpec.RFC - memSpec.memTimingSpec.RP;
-  for (auto &e : actcyclesBanks) {
+  for (auto & e : actcyclesBanks) {
     e += memSpec.memTimingSpec.RFC - memSpec.memTimingSpec.RP;
   }
-  for (auto& bs : bank_state) {
+  for (auto & bs : bank_state) {
     bs = BANK_PRECHARGED;
   }
 }
@@ -215,7 +215,7 @@ void CommandAnalysis::handlePreA(unsigned bank, int64_t timestamp)
 
     latest_pre_cycle = timestamp;
     // Reset the state for all banks to precharged.
-    for (auto& bs : bank_state) {
+    for (auto & bs : bank_state) {
       bs = BANK_PRECHARGED;
     }
   } else {

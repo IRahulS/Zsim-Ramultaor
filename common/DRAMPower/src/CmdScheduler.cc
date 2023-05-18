@@ -223,7 +223,7 @@ void cmdScheduler::analyticalScheduling(const MemorySpecification& memSpec)
       a = false;
     }
 
-    for (auto& b : bankAccessNum) {
+    for (auto & b : bankAccessNum) {
       b = -1;
     }
 
@@ -232,7 +232,7 @@ void cmdScheduler::analyticalScheduling(const MemorySpecification& memSpec)
 
     PhysicalAddress = memoryMap(transTrace[t], memSpec);
 
-    for (auto& b : bankPointer) {
+    for (auto & b : bankPointer) {
       b = PhysicalAddress.bankAddr; // the bank pointer per group.
     }
     bankGroupPointer = PhysicalAddress.bankGroupAddr;
